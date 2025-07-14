@@ -5,6 +5,9 @@ cmake_minimum_required(VERSION 3.18)
 project(dgl C CXX)
 message(STATUS "Start configuring project ${PROJECT_NAME}")
 
+set(CUDA_TOOLKIT_ROOT_DIR "/usr/local/cuda-12.4/")
+set(LD_LIBRARY_PATH "/usr/localcuda-12.4/lib64")
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -19,7 +22,7 @@ include(cmake/util/FindCUDA.cmake)
 dgl_option(BUILD_TYPE "Type of the build: dev, dogfood or release" "dev")
 message(STATUS "Build for ${BUILD_TYPE}")
 
-dgl_option(USE_CUDA "Build with CUDA" OFF)
+dgl_option(USE_CUDA "Build with CUDA" ON)
 dgl_option(TORCH_PYTHON_INTERPS "Python interpreter for building sub-components" python3)
 
 # Conda build related options.
